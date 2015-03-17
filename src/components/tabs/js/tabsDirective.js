@@ -45,7 +45,6 @@
                   class="md-tab"\
                   style="max-width: {{ tabWidth ? tabWidth + \'px\' : \'none\' }}"\
                   ng-repeat="tab in $mdTabsCtrl.tabs"\
-                  role="tab"\
                   ng-class="{ \'md-active\': tab.isActive(),\
                       \'md-focus\': tab.hasFocus(),\
                       \'md-disabled\': tab.scope.disabled }"\
@@ -55,6 +54,7 @@
               <md-dummy-tab\
                   tabindex="-1"\
                   id="tab-item-{{tab.id}}"\
+                  role="tab"\
                   aria-controls="tab-content-{{tab.id}}"\
                   aria-selected="{{tab.isActive()}}"\
                   aria-disabled="{{tab.scope.disabled}}"\

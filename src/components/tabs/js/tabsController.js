@@ -127,6 +127,7 @@
 
     function refreshIndex () {
       $scope.selectedIndex = getNearestSafeIndex($scope.selectedIndex);
+      ctrl.focusIndex = getNearestSafeIndex(ctrl.focusIndex);
     }
 
     function handleSelectedIndexChange (newValue, oldValue) {
