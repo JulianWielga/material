@@ -172,13 +172,14 @@ md-tabs {
       top: 0; left: 0; right: 0; bottom: 0;
       transform: translateX(0);
       text-align: center;
-      opacity: 0;
-      transition: all $swift-ease-in-out-duration $swift-ease-in-out-timing-function;
-      &.md-active {
-        opacity: 1;
+      transition: transform $swift-ease-in-out-duration $swift-ease-in-out-timing-function;
+      &.ng-leave, &.md-no-transition {
+        transition: none;
       }
       &.md-left {
         transform: translateX(-100%);
+        animation: 2 * $swift-ease-in-out-duration md-tab-content-hide;
+        opacity: 0;
         * {
           transition: visibility 0s linear;
           transition-delay: $swift-ease-in-out-duration;
@@ -187,22 +188,20 @@ md-tabs {
       }
       &.md-right {
         transform: translateX(100%);
+        animation: 2 * $swift-ease-in-out-duration md-tab-content-hide;
+        opacity: 0;
         * {
           transition: visibility 0s linear;
           transition-delay: $swift-ease-in-out-duration;
           visibility: hidden;
         }
       }
-      &.ng-leave {
-        transition: none;
-      }
     }
   }
-  md-dummy-tab {
-    position: absolute;
-    height: 0;
-    width: 0;
-    outline: none;
-    overflow: hidden;
-  }
+}
+
+@keyframes md-tab-content-hide {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
 }

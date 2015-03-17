@@ -54,6 +54,7 @@
               <md-dummy-tab\
                   tabindex="-1"\
                   id="tab-item-{{tab.id}}"\
+                  class="visually-hidden"\
                   role="tab"\
                   aria-controls="tab-content-{{tab.id}}"\
                   aria-selected="{{tab.isActive()}}"\
@@ -73,6 +74,7 @@
               aria-labelledby="tab-item-{{tab.id}}"\
               role="tabpanel"\
               ng-class="{\
+                \'md-no-transition\': $mdTabsCtrl.lastSelectedIndex == null,\
                 \'md-active\': tab.isActive(),\
                 \'md-left\':   tab.isLeft(),\
                 \'md-right\':  tab.isRight()\
