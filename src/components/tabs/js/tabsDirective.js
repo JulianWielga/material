@@ -32,8 +32,7 @@
           <md-tab-canvas\
               tabindex="0"\
               aria-activedescendant="tab-item-{{$mdTabsCtrl.tabs[$mdTabsCtrl.focusIndex].id}}"\
-              ng-focus="$mdTabsCtrl.hasFocus = true"\
-              ng-blur="$mdTabsCtrl.hasFocus = false"\
+              ng-focus="$mdTabsCtrl.redirectFocus()"\
               ng-class="{ \'md-paginated\': $mdTabsCtrl.shouldPaginate() }"\
               ng-keydown="$mdTabsCtrl.keydown($event)">\
             <md-pagination-wrapper\
@@ -45,17 +44,23 @@
                   class="md-tab"\
                   style="max-width: {{ tabWidth ? tabWidth + \'px\' : \'none\' }}"\
                   ng-repeat="tab in $mdTabsCtrl.tabs"\
-                  id="tab-item-{{tab.id}}"\
-                  aria-controls="tab-content-{{tab.id}}"\
                   role="tab"\
                   ng-class="{ \'md-active\': tab.isActive(),\
                       \'md-focus\': tab.hasFocus(),\
                       \'md-disabled\': tab.scope.disabled }"\
                   ng-disabled="tab.scope.disabled"\
-                  aria-selected="{{tab.isActive()}}"\
-                  aria-disabled="{{tab.scope.disabled}}"\
                   ng-click="$mdTabsCtrl.select(tab.getIndex())"\
                   md-label-template="tab.label"></md-tab-item>\
+              <md-dummy-tab\
+                  tabindex="-1"\
+                  id="tab-item-{{tab.id}}"\
+                  aria-controls="tab-content-{{tab.id}}"\
+                  aria-selected="{{tab.isActive()}}"\
+                  aria-disabled="{{tab.scope.disabled}}"\
+                  ng-focus="$mdTabsCtrl.hasFocus = true"\
+                  ng-blur="$mdTabsCtrl.hasFocus = false"\
+                  ng-repeat="tab in $mdTabsCtrl.tabs"\
+                  md-label-template="tab.label"></md-dummy-tab>\
             </md-pagination-wrapper>\
           </md-tab-canvas>\
         </md-tab-wrapper>\

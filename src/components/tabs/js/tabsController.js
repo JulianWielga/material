@@ -9,6 +9,7 @@
     var ctrl = this,
         elements = {
           tabs:    $element[0].getElementsByTagName('md-tab-item'),
+          dummies: $element[0].getElementsByTagName('md-dummy-tab'),
           canvas:  $element[0].getElementsByTagName('md-tab-canvas')[0],
           inkBar:  $element[0].getElementsByTagName('md-ink-bar')[0],
           wrapper: $element[0].getElementsByTagName('md-pagination-wrapper')[0]
@@ -24,6 +25,7 @@
     ctrl.hasFocus = false;
     ctrl.lastClick = false;
 
+    ctrl.redirectFocus = redirectFocus;
     ctrl.attachRipple = attachRipple;
     ctrl.shouldStretchTabs = shouldStretchTabs;
     ctrl.shouldPaginate = shouldPaginate;
@@ -76,6 +78,11 @@
       if (newIndex === oldIndex) return;
       if (!elements.tabs[newIndex]) return;
       adjustOffset();
+      redirectFocus();
+    }
+
+    function redirectFocus () {
+      elements.dummies[ctrl.focusIndex].focus();
     }
 
     function adjustOffset () {
