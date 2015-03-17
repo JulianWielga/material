@@ -18,7 +18,7 @@
     ctrl.parent = $scope.$parent;
     ctrl.tabs = [];
     ctrl.lastSelectedIndex = null;
-    ctrl.focusIndex = null;
+    ctrl.focusIndex = 0;
     ctrl.offsetLeft = 0;
     ctrl.hasContent = true;
     ctrl.hasFocus = false;

@@ -31,6 +31,7 @@
           </md-next-button>\
           <md-tab-canvas\
               tabindex="0"\
+              aria-activedescendant="tab-item-{{$mdTabsCtrl.tabs[$mdTabsCtrl.focusIndex].id}}"\
               ng-focus="$mdTabsCtrl.hasFocus = true"\
               ng-blur="$mdTabsCtrl.hasFocus = false"\
               ng-class="{ \'md-paginated\': $mdTabsCtrl.shouldPaginate() }"\
