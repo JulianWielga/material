@@ -34,7 +34,8 @@
               aria-activedescendant="tab-item-{{$mdTabsCtrl.tabs[$mdTabsCtrl.focusIndex].id}}"\
               ng-focus="$mdTabsCtrl.redirectFocus()"\
               ng-class="{ \'md-paginated\': $mdTabsCtrl.shouldPaginate() }"\
-              ng-keydown="$mdTabsCtrl.keydown($event)">\
+              ng-keydown="$mdTabsCtrl.keydown($event)"\
+              role="tablist">\
             <md-pagination-wrapper\
                 ng-style="{ \'left\': \'-\' + $mdTabsCtrl.offsetLeft + \'px\' }"\
                 md-tab-scroll="$mdTabsCtrl.scroll($event)">\
@@ -87,8 +88,6 @@
         scope.selectedIndex = angular.isNumber(scope.selectedIndex) ? scope.selectedIndex : 0;
         //-- apply themes
         $mdTheming(element);
-        //-- attach role
-        element.attr('role', 'tablist');
       }
     };
   }
